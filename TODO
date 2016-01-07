@@ -1,0 +1,4 @@
+Implementar orden de ventas.
+Implementar ver, crear, destruir para los usuarios administadores.
+Implementar cambiar cantidad de productos (en el carrito de compras y en agregar producto).
+Calcular coste total del cartito.
