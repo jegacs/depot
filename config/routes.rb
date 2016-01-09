@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+
+  # resources :admin do
+  #   resources :products
+  #   collection do
+  #     get :panel
+  #   end
+  # end
   resources :line_products, only: [:create, :destroy]
   resources :carts
   get 'store/index'
 
-  resources :products
+  resources :products, only: [:index, :show, :new]
   devise_for :users 
     
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,7 +18,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'store#index'
-
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
