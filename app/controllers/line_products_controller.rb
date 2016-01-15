@@ -32,7 +32,7 @@ class LineProductsController < ApplicationController
 
     respond_to do |format|
       if @line_product.save
-        format.html { redirect_to @line_product.cart, notice: 'Line product was successfully created.' }
+        format.html { redirect_to products_url, notice: 'Producto agregado exitosamente a su carrito' }
         format.json { render :show, status: :created, location: @line_product }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@ class LineProductsController < ApplicationController
   def destroy
     @line_product.destroy
     respond_to do |format|
-      format.html { redirect_to line_products_url, notice: 'Line product was successfully destroyed.' }
+      format.html { redirect_to carts_url, notice: 'Eliminado del carrito' }
       format.json { head :no_content }
     end
   end

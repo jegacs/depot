@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
+  helper_method :is_admin?
+  
   def current_cart
     cart = Cart.find_by_user_id(current_user.id) # Identificamos el carrito por el usuario
   if cart.nil?
@@ -16,4 +18,10 @@ class ApplicationController < ActionController::Base
   cart
   
   end
+
+  def is_admin?
+    current_user.try(:admin?)
+  end
+
+  
 end

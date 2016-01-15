@@ -5,75 +5,34 @@
   <h3 class="desc">Productos</h3>
 </div>
 
-
-
-
-
-    <% @products.each_slice(4) do |p| %>
-    <nav class="row center-xs ">
-      <%p.each do |product|%>
-    <ul id="flash" class="col-xs ">
-      <li class="box large-padding" >
-	
-	<div class="row ">
-	  <div class="col-xs ">
-	    asdadsa
-	    <div class="box"><%= product.user %></div>
-	  </div>
-	</div>
-	
-	<div class="row">
-	  <div class="col-xs">
-	    <div class="box"><%= product.name %></div>
-	  </div>
-	</div>
-	
-	<div class="row">
-	  <div class="col-xs">
-	    <div class="box"><%= product.price %></div>
-	  </div>
-	</div>
-        
-	
-	<div class="row">
-	  <div class="col-xs">
-	    <div class="box"><%= link_to 'Show', product %></div>
-	  </div>
-	</div>
-	
-	
-	<div class="row">
-	  <div class="col-xs">
-	    <div class="box"><%= link_to 'Edit', edit_product_path(product) %></div>
-	  </div>
-	</div>
-	
-	<div class="row">
-	  <div class="col-xs">
-	    <div class="box"><%= link_to 'Destroy',
-				 product, method: :delete,
-				 data: { confirm: 'Are you sure?' } %></div>
-	  </div>
-	</div>
-	
-	<% if user_signed_in?%>
-	<div class="row">
-	  <div class="col-xs">
-	    <div class="box"><%= button_to 'Añadir al carrito',
-				 line_products_path(product_id: product),
-				 {class: "button button-primary button-rounded be-blue"} %>
-	      
-	    </div>
-	  </div>
-	</div>
-	<%end%>
-	
-	
-      </li>
-    </ul>
-    
+<table class="responstable">
+  <tr>
+    <th></th>
+    <th><center>Nombre</center></th>
+    <th><center>Precio</center></th>
+    <% if user_signed_in? && is_admin?%>
+    <th></th>
     <%end%>
- 
-    </nav>
-    <% end %> 
-<%= link_to 'New Product', new_product_path %>
+    <% if user_signed_in? && !is_admin?%>
+    <th><center>Carrito</center></th>
+    <%end%>
+  </tr>
+
+  <% @products.each do |product|%>
+  <tr>
+    <td><%= image_tag product.image, :size => "180x180"%></td>
+    <td><center><%=product.name%></center></td>
+    <% if user_signed_in? && is_admin?%>
+    <td><center><%=product.price%></center></td>
+    <%end%>
+    <td><center><%=link_to 'Mostrar', product%></center></td>
+    <% if user_signed_in? && !is_admin?%>
+    <td><center><%= button_to 'Añadir al carrito',
+	    line_products_path(product_id: product),
+		    {class: "button button-primary button-rounded be-blue"} %>
+	
+    </center></td>
+  </tr>
+  <%end%>
+  <%end%>
+</table>

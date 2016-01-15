@@ -15,5 +15,5 @@
   <%= @product.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if is_admin? %><%= link_to 'Editar', edit_product_path(@product) %> | <%end%>
+<%= link_to 'Regresar', products_path %>

@@ -1,2 +1,31 @@
-<h1>Admin#panel</h1>
-<p>Find me in app/views/admin/panel.html.erb</p>
+<h1>Panel de administracion</h1>
+<h1>Productos</h1>
+<table class="responstable">
+
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @products.each do |p| %>  
+  <tr>
+    <td><%= p.id%></td>
+    <td><%=p.name%></td>
+    <td><%=p.price%></td>
+    <td><%=link_to 'Mostrar', p%></td>
+    <td><%=link_to 'Editar', edit_product_path(p)%></td>
+    <td><%=link_to 'Eliminar', p, method: :delete, data: { confirm: '¿Seguro?'}%></td>
+    
+  </tr>
+  <%end%>
+  <tr>
+    <td><%= link_to "Agregar producto", new_product_path%></td>
+  </tr>
+</table>
+
+<h1>Ordenes</h1>
+

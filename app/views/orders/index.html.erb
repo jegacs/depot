@@ -1,0 +1,14 @@
+Porfavor, inserte la direccion a donde hay que llevar la orden.
+<%= form_for(@order) do |f| %>
+
+<p>Total : <%= @total %></p>
+
+<div class="field">
+  <%= f.label :address %><br>
+  <%= f.text_field :address %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Ordenar"%>
+</div>
+<% end %>
