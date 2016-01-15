@@ -19,6 +19,23 @@ class OrdersController < ApplicationController
       end
     end
   end
+
+  # def update
+  #   @order = Order.
+  #   respond_to do |format|
+  #     if @order.update(order_params)
+  #       format.html { redirect_to @order, notice: 'Orden correctamente modificado' }
+  #       format.json { render :show, status: :ok, location: @order }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @order.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+  # def update
+    
+  # end
+
   
   private
   def order_params

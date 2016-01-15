@@ -28,4 +28,32 @@
 </table>
 
 <h1>Ordenes</h1>
+<table class="responstable">
+
+  <tr>
+    <!-- <th></th> -->
+    <th>Usuario</th>
+    <th>Articulos</th>
+    <th>Direccion</th>
+    <th>Estado</th>
+    <!-- <th></th> -->
+    <!-- <th></th> -->
+  </tr>
+
+  <% @orders.each do |order| %>  
+  <tr>
+    <td><%= order.cart.user.email%></td>
+
+    <td>
+      <% order.cart.line_products.each do |lp| %>
+      <%= lp.quantity%>x <%= lp.product.name%>
+      <%end%>
+    </td>
+    <td><%= order.address %>
+    <td>
+      <%= order.status %>
+    </td>
+  </tr>
+  <%end%>
+ 
 

@@ -3,6 +3,7 @@ class AdminController < ApplicationController
   
   def panel
     @products = Product.all
+    @orders = Order.all
   end
 
   private
